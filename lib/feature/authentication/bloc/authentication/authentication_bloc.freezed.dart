@@ -22,7 +22,9 @@ mixin _$AuthenticationEvent {
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +34,8 @@ mixin _$AuthenticationEvent {
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +45,8 @@ mixin _$AuthenticationEvent {
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) =>
@@ -173,7 +177,9 @@ class _$AuthenticationEvent$SendPhoneImpl
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) {
     return sendPhone(phone);
@@ -186,7 +192,8 @@ class _$AuthenticationEvent$SendPhoneImpl
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) {
     return sendPhone?.call(phone);
@@ -199,7 +206,8 @@ class _$AuthenticationEvent$SendPhoneImpl
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) {
@@ -339,7 +347,9 @@ class _$AuthenticationEvent$VerifyPhoneImpl
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) {
     return verifyPhone(code);
@@ -352,7 +362,8 @@ class _$AuthenticationEvent$VerifyPhoneImpl
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) {
     return verifyPhone?.call(code);
@@ -365,7 +376,8 @@ class _$AuthenticationEvent$VerifyPhoneImpl
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) {
@@ -477,7 +489,9 @@ class _$AuthenticationEvent$LogoutImpl implements AuthenticationEvent$Logout {
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) {
     return logout();
@@ -490,7 +504,8 @@ class _$AuthenticationEvent$LogoutImpl implements AuthenticationEvent$Logout {
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) {
     return logout?.call();
@@ -503,7 +518,8 @@ class _$AuthenticationEvent$LogoutImpl implements AuthenticationEvent$Logout {
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) {
@@ -608,7 +624,9 @@ class _$AuthenticationEvent$CheckImpl implements AuthenticationEvent$Check {
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) {
     return check();
@@ -621,7 +639,8 @@ class _$AuthenticationEvent$CheckImpl implements AuthenticationEvent$Check {
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) {
     return check?.call();
@@ -634,7 +653,8 @@ class _$AuthenticationEvent$CheckImpl implements AuthenticationEvent$Check {
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) {
@@ -700,7 +720,7 @@ abstract class _$$AuthenticationEvent$ActivateImplCopyWith<$Res> {
           $Res Function(_$AuthenticationEvent$ActivateImpl) then) =
       __$$AuthenticationEvent$ActivateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username, File? avatar});
+  $Res call({String username, String? staffSecret, File? avatar});
 }
 
 /// @nodoc
@@ -717,6 +737,7 @@ class __$$AuthenticationEvent$ActivateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = null,
+    Object? staffSecret = freezed,
     Object? avatar = freezed,
   }) {
     return _then(_$AuthenticationEvent$ActivateImpl(
@@ -724,6 +745,10 @@ class __$$AuthenticationEvent$ActivateImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      staffSecret: freezed == staffSecret
+          ? _value.staffSecret
+          : staffSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
       avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -737,16 +762,18 @@ class __$$AuthenticationEvent$ActivateImplCopyWithImpl<$Res>
 class _$AuthenticationEvent$ActivateImpl
     implements AuthenticationEvent$Activate {
   const _$AuthenticationEvent$ActivateImpl(
-      {required this.username, required this.avatar});
+      {required this.username, this.staffSecret, required this.avatar});
 
   @override
   final String username;
+  @override
+  final String? staffSecret;
   @override
   final File? avatar;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.activate(username: $username, avatar: $avatar)';
+    return 'AuthenticationEvent.activate(username: $username, staffSecret: $staffSecret, avatar: $avatar)';
   }
 
   @override
@@ -756,11 +783,13 @@ class _$AuthenticationEvent$ActivateImpl
             other is _$AuthenticationEvent$ActivateImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
+            (identical(other.staffSecret, staffSecret) ||
+                other.staffSecret == staffSecret) &&
             (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, avatar);
+  int get hashCode => Object.hash(runtimeType, username, staffSecret, avatar);
 
   @JsonKey(ignore: true)
   @override
@@ -777,10 +806,12 @@ class _$AuthenticationEvent$ActivateImpl
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) {
-    return activate(username, avatar);
+    return activate(username, staffSecret, avatar);
   }
 
   @override
@@ -790,10 +821,11 @@ class _$AuthenticationEvent$ActivateImpl
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) {
-    return activate?.call(username, avatar);
+    return activate?.call(username, staffSecret, avatar);
   }
 
   @override
@@ -803,12 +835,13 @@ class _$AuthenticationEvent$ActivateImpl
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) {
     if (activate != null) {
-      return activate(username, avatar);
+      return activate(username, staffSecret, avatar);
     }
     return orElse();
   }
@@ -861,9 +894,11 @@ class _$AuthenticationEvent$ActivateImpl
 abstract class AuthenticationEvent$Activate implements AuthenticationEvent {
   const factory AuthenticationEvent$Activate(
       {required final String username,
+      final String? staffSecret,
       required final File? avatar}) = _$AuthenticationEvent$ActivateImpl;
 
   String get username;
+  String? get staffSecret;
   File? get avatar;
   @JsonKey(ignore: true)
   _$$AuthenticationEvent$ActivateImplCopyWith<
@@ -917,7 +952,9 @@ class _$AuthenticationEvent$DeleteImpl implements AuthenticationEvent$Delete {
     required TResult Function(String code) verifyPhone,
     required TResult Function() logout,
     required TResult Function() check,
-    required TResult Function(String username, File? avatar) activate,
+    required TResult Function(
+            String username, String? staffSecret, File? avatar)
+        activate,
     required TResult Function() delete,
   }) {
     return delete();
@@ -930,7 +967,8 @@ class _$AuthenticationEvent$DeleteImpl implements AuthenticationEvent$Delete {
     TResult? Function(String code)? verifyPhone,
     TResult? Function()? logout,
     TResult? Function()? check,
-    TResult? Function(String username, File? avatar)? activate,
+    TResult? Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult? Function()? delete,
   }) {
     return delete?.call();
@@ -943,7 +981,8 @@ class _$AuthenticationEvent$DeleteImpl implements AuthenticationEvent$Delete {
     TResult Function(String code)? verifyPhone,
     TResult Function()? logout,
     TResult Function()? check,
-    TResult Function(String username, File? avatar)? activate,
+    TResult Function(String username, String? staffSecret, File? avatar)?
+        activate,
     TResult Function()? delete,
     required TResult orElse(),
   }) {

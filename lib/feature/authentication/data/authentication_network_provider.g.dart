@@ -108,11 +108,19 @@ class _AuthenticationNetworkProvider implements AuthenticationNetworkProvider {
   }
 
   @override
-  Future<User> activate({required String username}) async {
+  Future<User> activate({
+    required String username,
+    String? staffSecret,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = {'username': username};
+    final _data = {
+      'username': username,
+      'staff_secret': staffSecret,
+    };
+    _data.removeWhere((k, v) => v == null);
     final _result =
         await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(Options(
       method: 'POST',

@@ -21,7 +21,10 @@ abstract class AuthenticationNetworkProvider {
   Future<User> me();
 
   @POST('/auth/activate')
-  Future<User> activate({@Field() required final String username});
+  Future<User> activate({
+    @Field() required final String username,
+    @Field('staff_secret') final String? staffSecret,
+  });
 
   @DELETE('/auth/delete')
   Future<void> delete();

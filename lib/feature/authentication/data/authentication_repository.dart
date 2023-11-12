@@ -10,7 +10,7 @@ abstract interface class IAuthenticationRepository {
 
   Future<int> sendPhone({required final String phone});
   Future<User> verifyPhone({required int userId, required String code});
-  Future<User> activate({required final String username});
+  Future<User> activate({required final String username, final String? staffSecret});
 
   Future<void> logout();
   Future<void> delete();
@@ -46,8 +46,8 @@ class AuthenticationRepository implements IAuthenticationRepository {
           .skip(1);
 
   @override
-  Future<User> activate({required String username}) async {
-    final user = await _networkProvider.activate(username: username);
+  Future<User> activate({required String username, final String? staffSecret}) async {
+    final user = await _networkProvider.activate(username: username, staffSecret: staffSecret);
     if (user.isAuthenticated) _localProvider.saveToken(user.token!);
     _userController.add(_user = user);
     return user;

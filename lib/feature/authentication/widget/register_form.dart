@@ -13,11 +13,20 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   late final TextEditingController _usernameController;
+  late final TextEditingController _staffSecretController;
 
   @override
   void initState() {
     _usernameController = TextEditingController(text: 'Akzhol');
+    _staffSecretController = TextEditingController();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _staffSecretController.dispose();
+    super.dispose();
   }
 
   @override
@@ -31,7 +40,13 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
         ),
         ElevatedButton(
-          onPressed: () => context.read<AuthenticationBloc>().add(AuthenticationEvent.activate(username: _usernameController.text, avatar: null)),
+          onPressed: () => context.read<AuthenticationBloc>().add(
+                AuthenticationEvent.activate(
+                  username: _usernameController.text,
+                  staffSecret: _staffSecretController.text,
+                  avatar: null,
+                ),
+              ),
           child: const Text('Next'),
         ),
       ],
