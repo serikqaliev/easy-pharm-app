@@ -31,25 +31,37 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: _usernameController,
-          decoration: const InputDecoration(
-            labelText: 'Username',
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextField(
+            controller: _usernameController,
+            decoration: const InputDecoration(
+              hintText: 'Имя пользователя',
+            ).applyDefaults(Theme.of(context).inputDecorationTheme),
           ),
-        ),
-        ElevatedButton(
-          onPressed: () => context.read<AuthenticationBloc>().add(
-                AuthenticationEvent.activate(
-                  username: _usernameController.text,
-                  staffSecret: _staffSecretController.text,
-                  avatar: null,
+          const SizedBox(height: 16),
+          TextField(
+            controller: _staffSecretController,
+            decoration: const InputDecoration(
+              hintText: 'Секретный код сотрудника',
+            ).applyDefaults(Theme.of(context).inputDecorationTheme),
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () => context.read<AuthenticationBloc>().add(
+                  AuthenticationEvent.activate(
+                    username: _usernameController.text,
+                    staffSecret: _staffSecretController.text,
+                    avatar: null,
+                  ),
                 ),
-              ),
-          child: const Text('Next'),
-        ),
-      ],
+            child: const Text('Next'),
+          ),
+        ],
+      ),
     );
   }
 }

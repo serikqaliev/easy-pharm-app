@@ -21,19 +21,23 @@ class _PhoneFormState extends State<PhoneForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: _phoneController,
-          decoration: const InputDecoration(
-            labelText: 'Phone',
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          TextField(
+            controller: _phoneController,
+            decoration: const InputDecoration(
+              labelText: 'Phone',
+            ),
           ),
-        ),
-        ElevatedButton(
-          onPressed: () => AuthenticationScope.blocOf(context).add(AuthenticationEvent.sendPhone(phone: _phoneController.text)),
-          child: const Text('Next'),
-        ),
-      ],
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () => AuthenticationScope.blocOf(context).add(AuthenticationEvent.sendPhone(phone: _phoneController.text)),
+            child: const Text('Next'),
+          ),
+        ],
+      ),
     );
   }
 }

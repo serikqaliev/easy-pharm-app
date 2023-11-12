@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../home/page/main_page.dart';
 import '../bloc/authentication/authentication_bloc.dart';
 import '../widget/widget.dart';
 
@@ -13,9 +12,6 @@ class LoginPage extends StatelessWidget {
         pages: <Page<Object?>>[
           MaterialPage<void>(
             child: Scaffold(
-              appBar: AppBar(
-                title: const Text('Sign In'),
-              ),
               body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                 builder: (context, state) {
                   if (state.isProcessing) return const Center(child: CircularProgressIndicator());
@@ -26,9 +22,9 @@ class LoginPage extends StatelessWidget {
                     children: [
                       BlocBuilder<AuthenticationBloc, AuthenticationState>(
                         builder: (context, state) => state.flow.map(
-                          initial: () => const Column(children: [Text('Send Phone')]),
-                          codeSent: () => const Column(children: [Text('Code Sent')]),
-                          notRegistered: () => const Column(children: [Text('Not Activated')]),
+                          initial: () => const _Title(title: 'Вход'),
+                          codeSent: () => const _Title(title: 'Код подтверждения'),
+                          notRegistered: () => const _Title(title: 'Регистрация'),
                         ),
                       ),
                       BlocBuilder<AuthenticationBloc, AuthenticationState>(
@@ -47,4 +43,23 @@ class LoginPage extends StatelessWidget {
         ],
         onPopPage: (route, result) => route.didPop(result),
       );
+}
+
+class _Title extends StatelessWidget {
+  const _Title({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          title,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 16),
+      ],
+    );
+  }
 }
