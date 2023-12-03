@@ -21,25 +21,25 @@ class _MainPageState extends State<MainPage> {
   List<BottomNavItem> get items => [
         (
           HomeRoute(children: [FilterRoute()]),
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная'),
         ),
         (
           const CatalogRoute(),
-          const BottomNavigationBarItem(icon: Icon(Icons.medication_rounded), label: 'Catalog'),
+          const BottomNavigationBarItem(icon: Icon(Icons.medication_rounded), label: 'Категории'),
         ),
         if (isStaff)
           (
             AllMedicinesRoute(),
-            const BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Medicines'),
+            const BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Лекарства'),
           ),
         (
           const SymptomsRoute(),
-          const BottomNavigationBarItem(icon: Icon(Icons.medical_information), label: 'Symptoms'),
+          const BottomNavigationBarItem(icon: Icon(Icons.medical_information), label: 'Симптомы'),
         ),
         if (!isStaff)
           (
             const CartRoute(),
-            const BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+            const BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Корзина'),
           ),
       ];
 

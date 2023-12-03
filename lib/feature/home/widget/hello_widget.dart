@@ -1,3 +1,4 @@
+import 'package:easy_pharm_app/feature/authentication/bloc/authentication/authentication_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../authentication/widget/authentication_scope.dart';
@@ -30,6 +31,15 @@ class HelloWidget extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+          ),
+          IconButton(
+            onPressed: () => AuthenticationScope.blocOf(context).add(
+              const AuthenticationEvent.logout(),
+            ),
+            icon: Icon(
+              Icons.logout,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
         ],

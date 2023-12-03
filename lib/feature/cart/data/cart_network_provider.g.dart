@@ -13,7 +13,7 @@ class _CartNetworkProvider implements CartNetworkProvider {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://localhost:8000';
+    baseUrl ??= 'http://10.0.2.2:8000';
   }
 
   final Dio _dio;
@@ -26,26 +26,23 @@ class _CartNetworkProvider implements CartNetworkProvider {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<CartItem>>(Options(
+    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<CartItem>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/cart/list',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    var value = _result.data!
-        .map((dynamic i) => CartItem.fromJson(i as Map<String, dynamic>))
-        .toList();
+        .compose(
+          _dio.options,
+          '/cart/list',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    var value = _result.data!.map((dynamic i) => CartItem.fromJson(i as Map<String, dynamic>)).toList();
     return value;
   }
 
@@ -55,23 +52,22 @@ class _CartNetworkProvider implements CartNetworkProvider {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {'medicine_id': medicineId};
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<CartItem>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<CartItem>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/cart',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .compose(
+          _dio.options,
+          '/cart',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = CartItem.fromJson(_result.data!);
     return value;
   }
@@ -82,25 +78,23 @@ class _CartNetworkProvider implements CartNetworkProvider {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>?>(_setStreamType<CartItem>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<CartItem>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/cart/delete',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value =
-        _result.data == null ? null : CartItem.fromJson(_result.data!);
+        .compose(
+          _dio.options,
+          '/cart/delete',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data == null ? null : CartItem.fromJson(_result.data!);
     return value;
   }
 
@@ -129,9 +123,7 @@ class _CartNetworkProvider implements CartNetworkProvider {
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
-    if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes ||
-            requestOptions.responseType == ResponseType.stream)) {
+    if (T != dynamic && !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {

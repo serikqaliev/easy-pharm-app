@@ -173,7 +173,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     setState(AuthenticationState.processing(user: state.user, message: 'Activating', flow: AuthenticationFlow.notRegistered));
 
     try {
-      final user = await _authenticationRepository.activate(username: event.username);
+      final user = await _authenticationRepository.activate(username: event.username, staffSecret: event.staffSecret);
       setState(AuthenticationState.fromUser(user));
     } on Object catch (error, stackTrace) {
       setState(

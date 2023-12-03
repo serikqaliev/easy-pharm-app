@@ -13,7 +13,7 @@ class _SymptomsNetworkProvider implements SymptomsNetworkProvider {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://localhost:8000';
+    baseUrl ??= 'http://10.0.2.2:8000';
   }
 
   final Dio _dio;
@@ -27,23 +27,22 @@ class _SymptomsNetworkProvider implements SymptomsNetworkProvider {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(symptom.toJson());
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Symptom>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Symptom>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/symptoms',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .compose(
+          _dio.options,
+          '/symptoms',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = Symptom.fromJson(_result.data!);
     return value;
   }
@@ -54,26 +53,23 @@ class _SymptomsNetworkProvider implements SymptomsNetworkProvider {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Symptom>>(Options(
+    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Symptom>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/symptoms/list',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    var value = _result.data!
-        .map((dynamic i) => Symptom.fromJson(i as Map<String, dynamic>))
-        .toList();
+        .compose(
+          _dio.options,
+          '/symptoms/list',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    var value = _result.data!.map((dynamic i) => Symptom.fromJson(i as Map<String, dynamic>)).toList();
     return value;
   }
 
@@ -126,9 +122,7 @@ class _SymptomsNetworkProvider implements SymptomsNetworkProvider {
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
-    if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes ||
-            requestOptions.responseType == ResponseType.stream)) {
+    if (T != dynamic && !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {
