@@ -17,13 +17,6 @@ class HelloWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          const CircleAvatar(
-            radius: 24,
-            backgroundImage: NetworkImage(
-              'https://avatars.githubusercontent.com/u/24712956?v=4',
-            ),
-          ),
-          const SizedBox(width: 16),
           Expanded(
             child: Text(
               'Добро пожаловать, ${user.username}!',
